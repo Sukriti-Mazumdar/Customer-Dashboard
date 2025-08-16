@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Company | DoMyTaxes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f9f9fb;
+      color: #181818;
+    }
+    a { color: #292972; text-decoration: none; }
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 44px 18px;
+      background: #fff;
+      box-shadow: 0 1px 8px #edeefd36;
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #181818;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo-bar { width: 32px; height: 4px; background: #181818; margin-right: 6px; }
+    .nav-links { list-style: none; display: flex; gap: 36px; margin: 0; padding: 0; }
+    .nav-links li {
+      font-size: 1.14rem; color: #181818; cursor: pointer; background: #f8f8fa;
+      border-radius: 7px; padding: 10px 30px; font-weight: 500; transition: background 0.2s;
+    }
+    .nav-links li.active,
+    .nav-links li:hover,
+    .nav-links li:focus { background: #eeeef2; color: #3129b6; }
+    .nav-links li.active { font-weight: 700; }
+    .right-buttons { display: flex; gap: 18px; }
+    .login-btn {
+      background: none; border: none; color: #151445; font-size: 1rem;
+      cursor: pointer; padding: 0 13px;
+    }
+    .consult-btn {
+      background: #000;
+      border-radius: 9px;
+      border: none;
+      padding: 10px 24px;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #18181830;
+      transition: background 0.2s;
+    }
+    .consult-btn:hover { background: #444; }
+    /* HERO / STORY SECTION */
+    .story-section {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 44px 4vw 56px 4vw; min-height: 440px;
+    }
+    .story-content { flex: 2; padding-right: 2vw; }
+    .story-decor { margin-bottom: 24px; }
+    .story-decor-line { border-top: 4px solid #e7b457; border-radius: 3px; width: 47px; margin-bottom: 8px;}
+    .story-title { font-size: 2.8rem; font-weight: 700; margin-bottom: 18px; }
+    .story-lead { margin-bottom: 22px; }
+    .story-contact-btn {
+      padding: 13px 35px; background: #fff; border-radius: 11px;
+      border: 2px solid #ececff; cursor: pointer; font-size: 1.13rem; font-weight: 600;
+      transition: background 0.18s;
+    }
+    .story-contact-btn:hover { background: #f5e8ff; }
+    .story-illustration {
+      flex: 1.3; display: flex; justify-content: flex-end; align-items: center;
+      min-width: 340px;
+    }
+    .story-illustration img { width: 90%; max-width: 410px; }
+
+    /* VISION / MISSION SECTION */
+    .vision-section { background: #f9f8fd; padding: 54px 2vw 38px 2vw; display: flex; align-items: center;}
+    .vision-content { flex: 1; }
+    .vision-lead { font-size: 2.2rem; font-weight: 700; margin-bottom: 14px;}
+    .vision-tag { color: #888; background: #eff0fa; font-size: 1rem; padding: 7px 16px; border-radius: 18px; margin-bottom: 18px; display: inline-block;}
+    .vision-highlight { color: #231682; text-decoration: underline; font-weight: 700;}
+    .vision-illustration { flex: 1; display: flex; justify-content: flex-end;}
+    .vision-illustration img { width: 94%; max-width: 265px;}
+    .mission-section { padding: 72px 4vw 44px 4vw;}
+    .mission-tag { color: #888; background: #eff0fa; font-size: 1rem; padding: 7px 16px; border-radius: 17px; margin-bottom: 19px; display: inline-block;}
+    .mission-title { font-size: 2.65rem; font-weight: 700; margin-bottom: 12px; }
+
+    /* FEATURES / GRID SECTION */
+    .features-section { padding: 42px 1vw 52px 1vw;}
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(2,1fr);
+      gap: 0; background: #fff; box-shadow: 0 4px 38px #b7a5f40f, 0 0 0 #fff;
+      border-radius: 13px; overflow: hidden; max-width: 1400px; margin: 0 auto;
+      border: 1.5px solid #f5f2fc;
+    }
+    .feature-card {
+      background: #fff;
+      padding: 38px 42px 28px 42px;
+      display: flex; flex-direction: column; gap: 19px; min-height: 157px;
+      border-right: 1px solid #f2f2f2; border-bottom: 1px solid #ededed;
+    }
+    .features-grid .feature-card:nth-child(3),
+    .features-grid .feature-card:nth-child(6){ border-right: none;}
+    .features-grid .feature-card:nth-child(4),
+    .features-grid .feature-card:nth-child(5),
+    .features-grid .feature-card:nth-child(6){ border-bottom: none;}
+    .feature-icon {
+      font-size: 2.3rem; background: #f5f2fc; color: #7d68d8; border-radius: 50%; padding: 18px;
+      margin-bottom: 7px; width: 52px; text-align: center;
+    }
+    .feature-title { font-size: 1.26rem; font-weight: 700; margin-bottom: 0;}
+    .feature-desc { color: #666; font-size: 1.03rem;}
+
+    /* PROBLEMS SOLVED GRID SECTION */
+    .problems-section { background: #f6f6ff; padding: 86px 2vw 68px 2vw;}
+    .problems-title { font-size: 2.55rem; font-weight: 700; margin-bottom: 17px; text-align: center;}
+    .problems-subtitle { text-align: center; color: #767578; font-size: 1.2rem; margin-bottom: 38px;}
+    .problems-grid {
+      display: flex; gap: 54px; justify-content: center; align-items: flex-start; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .problem-card {
+      background: #fff; box-shadow: 0 4px 40px #ccbef621;
+      border-radius: 38px; padding: 55px 42px 28px 42px; width: 480px;
+      display: flex; flex-direction: column; align-items: center; gap: 21px;
+    }
+    .problem-illustration img { width: 95px; margin-bottom: 13px;}
+    .problem-title { font-size: 2.0rem; font-weight: 700; margin-bottom: 22px;}
+    .problem-list { list-style: none; padding: 0; margin: 0; width: 100%;}
+    .problem-list li {
+      background: #f3f2fa; color: #222; padding: 13px 28px; border-radius: 12px; font-size: 1.22rem;
+      margin-bottom:10px; width: 100%;
+    }
+
+    /* REWIRE INDIA/FOOTER SECTION */
+    .rewire-section { background: #1a1844; color: #fff; padding: 88px 0 0 0; text-align: center;}
+    .rewire-badges-row { display: flex; gap: 25px; justify-content: center; margin-bottom: 18px;}
+    .rewire-badge {
+      color: #e4eaf2; background: #292971; font-size: 1.18rem; border-radius: 22px; padding: 13px 24px; font-weight: 600;
+    }
+    .rewire-title { font-size: 2.8rem; font-weight: 700; margin-top: 27px; margin-bottom: 22px;}
+    .rewire-desc { font-size: 1.3rem; color: #bdbcf7; margin-bottom: 45px;}
+    .rewire-btn-row { margin-top: 36px; display: flex; gap: 28px; justify-content: center;}
+    .rewire-btn,
+    .rewire-btn-outline {
+      font-size: 1.37rem; font-weight: 700; border-radius: 13px; padding: 17px 57px; border: none; box-shadow: 0px 3px 12px #e7c98e33; cursor: pointer;
+    }
+    .rewire-btn { background: #ffcb61; color: #23215e; }
+    .rewire-btn-outline { background: #1a1844; color: #fff; border: 2.5px solid #fff; }
+    .rewire-btn:hover { background: #ffd88c; }
+    .rewire-btn-outline:hover { background: #ffcb61; color: #23215e; border: 2.5px solid #ffcb61;}
+    /* Footer */
+    .footer-wrap { background: #fff; padding: 65px 0 0 0;}
+    .footer {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; max-width: 1360px; margin: 0 auto; padding: 38px 15px 22px 15px; color: #292971; font-size: 1.09rem;
+    }
+    .footer-col-logo { flex: 1; min-width: 170px;}
+    .footer-logo { font-size: 2.2rem; font-weight: 900; letter-spacing: 2px;}
+    .footer-copy { margin-top: 15px; font-size: 1.08rem; line-height: 1.35;}
+    .footer-col-legal, .footer-col-company, .footer-col-social { flex: 1; min-width: 170px;}
+    .footer-title { font-weight: 700; margin-bottom: 10px;}
+    .footer-list { list-style: none; padding: 0; margin: 0;}
+    .footer-list li { margin-bottom: 8px; }
+    .footer-social-row { display: flex; gap: 16px; margin-top: 17px; }
+    .footer-social-icon { font-size: 1.8rem; color: #23215e; text-decoration: none;}
+    .footer-social-icon:hover { color: #4f3fcf;}
+    @media (max-width: 1200px) {
+      .story-section, .vision-section, .footer { flex-direction: column;}
+      .features-grid { grid-template-columns: 1fr; grid-template-rows: none;}
+      .problems-grid { flex-direction: column; gap: 18px;}
+      .problem-card { width: 95vw; padding: 29px 7vw; }
+    }
+    @media (max-width: 800px) {
+      .story-title, .problems-title, .mission-title, .rewire-title { font-size: 1.55rem;}
+      .rewire-badges-row { flex-direction: column; gap: 9px; }
+      .rewire-btn, .rewire-btn-outline { padding: 10px 11vw; font-size: 1rem;}
+    }
+    @media (max-width:600px){
+      .story-section,.vision-section,.mission-section { padding: 13px 1vw 22px 2vw;}
+      .footer { flex-direction: column; align-items: center;}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo"><div class="logo-bar"></div>TAX</div>
+    <ul class="nav-links">
+      <li>Home</li><li class="active">Company</li>
+      <li>Services</li><li>Contact Us</li>
+    </ul>
+    <div class="right-buttons">
+      <button class="login-btn">login</button>
+      <button class="consult-btn">Book a free consultation</button>
+    </div>
+  </nav>
+
+  <!-- STORY/HERO -->
+  <section class="story-section">
+    <div class="story-content">
+      <div class="story-decor">
+        <div class="story-decor-line"></div>
+        <div class="story-decor-line" style="width:38px; margin-bottom:8px;"></div>
+      </div>
+      <div style="font-size:1.07rem;color:#292971; font-weight:500; margin-bottom:16px;">Our Story</div>
+      <div class="story-title">Redesigning how India<br>does taxes</div>
+      <div class="story-lead">
+        We started with a simple truth: filing taxes in India is harder than it should be.<br>
+        Too many forms, too many follow-ups — not enough clarity.<br>
+        So we built something better.<br><br>
+
+        DoMyTaxes combines expert Chartered Accountants with smart, cloud-first technology to make tax filing seamless, transparent, and actually stress-free.
+      </div>
+      <button class="story-contact-btn">Contact Us</button>
+    </div>
+    <div class="story-illustration">
+      <img src="https://dummyimage.com/390x250/8a6be7/e5e6ff&text=Illustration" alt="Tax India illustration"/>
+    </div>
+  </section>
+
+  <!-- VISION/MISSION SECTION -->
+  <section class="vision-section">
+    <div class="vision-content">
+      <div class="vision-tag">Our Vision</div>
+      <div class="vision-lead">
+        To build a comprehensive ecosystem for taxpayers and tax professionals — through a tech-driven, <span class="vision-highlight">fully integrated solution for tax filing</span>, planning, and personal finance.
+      </div>
+    </div>
+    <div class="vision-illustration">
+      <img src="https://dummyimage.com/250x210/aecbf5/eaeafd&text=Vision" alt="Vision image"/>
+    </div>
+  </section>
+  <section class="mission-section">
+    <div class="mission-tag">Our Mission</div>
+    <div class="mission-title">Empowering Indian taxpayers with clarity.</div>
+  </section>
+
+  <!-- FEATURES / GRID SECTION -->
+  <section class="features-section">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">File Your ITR in Under 10 Minutes</div>
+        <div class="feature-desc">No paperwork, no delays — just fast, accurate, guided filing.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📑</div>
+        <div class="feature-title">Smart Tax Planning with Actionable Savings</div>
+        <div class="feature-desc">More than filing — we help you save better with expert-backed plans.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <div class="feature-title">No Redundant Emails or Data Hassles</div>
+        <div class="feature-desc">Everything in one place. Zero back-and-forth.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏰</div>
+        <div class="feature-title">Plan Ahead, Not Just File Late</div>
+        <div class="feature-desc">Stay compliant all year — not just at deadline time.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧑‍💻</div>
+        <div class="feature-title">AI + Operator = Peace of Mind</div>
+        <div class="feature-desc">Our platform combines automation with expert review to ensure nothing’s missed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DoMyTaxes JOURNEY / PROBLEMS SOLVED SECTION -->
+  <section class="problems-section">
+    <div style="font-size:1.09rem;color:#767578; font-weight:600; margin-bottom:16px;">OUT STORY</div>
+    <div class="problems-title">DoMyTaxes Journey</div>
+    <div style="max-width:830px; margin:0 auto 38px auto; font-size:1.13rem;">
+      DoMyTaxes started with a simple goal: to make tax filing in India easy and stress-free.<br><br>
+      Built by Operators and powered by tech, we replaced back-and-forth emails and last-minute chaos with a secure, seamless platform.<br>
+      Today, <b>1,000+ Indians</b> — from salaried individuals to NRIs — trust us for fast, transparent, and expert-backed tax filing.<br>
+      <br>
+      <a href="#" style="font-weight:600;">Reach out to us &rarr;</a>
+    </div>
+    <!-- Timeline -->
+    <div style="display:flex; justify-content:center; gap:32px; margin-top:29px;">
+      <div style="background:#fff; border-radius:20px; box-shadow:0 3px 16px #d9e1fa44; padding:28px 17px 22px 19px; min-width:190px;">
+        <div style="border-top:4px solid #231682; width:65px; margin-bottom:9px;"></div>
+        <div style="color:#888;font-size:1.05rem;">2022</div>
+        <div style="font-weight:bold;font-size:1.12rem;margin-bottom:7px;">The Idea Was Born</div>
+        <div style="font-size:1.07rem;">
+          After seeing friends and family struggle with last-minute filings, confusing forms, and endless email chains, we knew there had to be a better way. So, we started building it.
+        </div>
+      </div>
+      <div style="background:#fff; border-radius:20px; box-shadow:0 3px 18px #d9e1fa44; padding:28px 17px 22px 19px; min-width:190px;">
+        <div style="border-top:4px solid #231682; width:65px; margin-bottom:9px;"></div>
+        <div style="color:#888;font-size:1.05rem;">2023</div>
+        <div style="font-weight:bold;font-size:1.12rem;margin-bottom:7px;">Launch of DoMyTaxes</div>
+        <div style="font-size:1.07rem;">
+          We launched our cloud platform, combining Operator expertise and automation. Early adopters experienced speed, simplicity, and zero jargon. No delays. Just better filing.
+        </div>
+      </div>
+    </div>
+    <!-- Next/Prev Arrows -->
+    <div style="margin-top:20px; display:flex; justify-content:center; gap:13px;">
+      <button style="border:none;background:#ececff;color:#292971;font-size:1.6rem; border-radius:18px;padding:8px 18px; cursor:pointer;">&#8592;</button>
+      <button style="border:none;background:#231682;color:#fff;font-size:1.6rem; border-radius:18px;padding:8px 18px; cursor:pointer;">&#8594;</button>
+    </div>
+    <div class="problems-title" style="margin-top:69px;">The Problems We Solved</div>
+    <div class="problems-subtitle">Solving the Everyday Struggles of Indian Taxpayers</div>
+    <div class="problems-grid">
+      <!-- Problem cards -->
+      <div class="problem-card">
+        <div class="problem-illustration"><img src="https://dummyimage.com/70x70/b79cf1/eaeafd&text=Img" alt="Individuals"/></div>
+        <div class="problem-title">For Individuals</div>
+        <ul class="problem-list">
+          <li>Filing is confusing and last-minute</li>
+          <li>CommuniOperatorion with experts is clunky and insecure</li>
+          <li>No real visibility on status, errors, or refunds</li>
+          <li>Income/tax summary is hard to understand</li>
+        </ul>
+      </div>
+      <div class="problem-card">
+        <div class="problem-illustration"><img src="https://dummyimage.com/70x70/8882d8/eaeafd&text=Img" alt="Operators"/></div>
+        <div class="problem-title">For Operator's & Tax Professionals</div>
+        <ul class="problem-list">
+          <li>Overload during filing season</li>
+          <li>No proper system to manage</li>
+          <li>10-20% files lost due to lack of bandwidth</li>
+          <li>Manual tasks with no automation support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REWIRE INDIA / CTA SECTION -->
+  <section class="rewire-section">
+    <div class="rewire-badges-row">
+      <div class="rewire-badge">No more confusion.</div>
+      <div class="rewire-badge">No more last-minute chaos.</div>
+      <div class="rewire-badge">No more overpaying.</div>
+    </div>
+    <div class="rewire-title">Let’s Rewire Tax Culture in India</div>
+    <div class="rewire-desc">Made with clarity. Powered by tech. Built for India.</div>
+    <div class="rewire-btn-row">
+      <button class="rewire-btn">File ITR Now</button>
+      <button class="rewire-btn-outline">Talk to Operator Advisor</button>
+    </div>
+  </section>
+  <div class="footer-wrap">
+    <footer class="footer">
+      <div class="footer-col-logo">
+        <div class="footer-logo">TAX</div>
+        <div class="footer-copy">
+          © 2025 Copyright, All Right Reserved, Made by Jayeetra Bhattacharjee
+        </div>
+      </div>
+      <div class="footer-col-legal">
+        <div class="footer-title">Legal</div>
+        <ul class="footer-list">
+          <li>Privacy Policy</li>
+          <li>Terms & Conditions</li>
+          <li>Return Policy</li>
+        </ul>
+      </div>
+      <div class="footer-col-company">
+        <div class="footer-title">Company</div>
+        <ul class="footer-list">
+          <li>About Us</li>
+          <li>Careers</li>
+          <li>FAQs</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-col-social">
+        <div class="footer-title">Follow us</div>
+        <div class="footer-social-row">
+          <a class="footer-social-icon" href="#"><span style="font-size:1.5rem;">&#x1F4F7;</span></a>
+          <a class="footer-social-icon" href="#"><span style="font-size:1.5rem;">&#x1F5A5;&#xFE0F;</span></a>
+          <a class="footer-social-icon" href="#"><span style="font-size:1.5rem;">&#x1F4F1;</span></a>
+          <a class="footer-social-icon" href="#"><span style="font-size:1.5rem;">&#x1F4E7;</span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
