@@ -1,3 +1,6 @@
 [submodule "settings-replica-studio"]
 	path = settings-replica-studio
 	url = https://github.com/Sreemoyee46/settings-replica-studio.git
+[submodule "Admin_dashboard"]
+	path = Admin_dashboard
+	url = https://github.com/Sukriti-Mazumdar/Admin_dashboard.git
