@@ -1,0 +1,3 @@
+[submodule "settings-replica-studio"]
+	path = settings-replica-studio
+	url = https://github.com/Sreemoyee46/settings-replica-studio.git
